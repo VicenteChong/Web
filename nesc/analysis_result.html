@@ -1,0 +1,113 @@
+<!doctype html>
+<html>
+
+   <head>
+      <meta charset="UTF-8">
+      <title></title>
+      <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+      <link href="css/lib/mui.min.css" rel="stylesheet" />
+      <link rel="stylesheet" type="text/css" href="css/common.css" />
+      <link rel="stylesheet" type="text/css" href="css/analysis_result.css" />
+   </head>
+
+   <body>
+      <header class="mui-bar mui-bar-nav">
+         <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+         <h1 id="title" class="mui-title">分析结论</h1>
+         <!--<a id="menu" class="mui-action-menu mui-icon mui-icon-bars mui-pull-right" href="#topPopover"></a>-->
+      </header>
+      <div class="container-wrapper">
+         <div id="tabContainer" class="tab-pane">
+            <span class="tab-item selected" type="xnyzj">●</span>
+            <span class="tab-item" type="tfl">●</span>
+            <span class="tab-item" type="zdfh">●</span>
+            <span class="tab-item" type="fhl">●</span>
+            <span class="tab-item" type="zbdc">●</span>
+            <span class="tab-item" type="sbyxs">●</span>
+            <span class="tab-item" type="fdzb">●</span>
+            <span class="tab-item" type="fhl_xnyzj">●</span>
+            <span class="tab-item" type="zcqws_xnyzj">●</span>
+            <span class="tab-item" type="zcqws_fhl_qdl">●</span>
+            <span class="tab-item" type="xhjy">●</span>
+         </div>
+         <div class="mui-slider">
+            <div id="sliderGroup" class="mui-slider-group">
+               <!--<div dtype="xnyzj" class="mui-slider-item mui-active">
+                  <div class="result-title"></div>
+                  <div class="result-info-wrapper">
+                     <label>结论:</label>
+                     <span id="result-info"></span>
+                  </div>
+                  <div class="chart-wrapper"></div>
+                  <div class="table-show">示例其他参数</div>
+                  <div class="table-wrapper">
+                     <table class="table1"></table>
+                  </div>
+               </div>
+               <div dtype="tfl" class="mui-slider-item">2
+               </div>
+               <div dtype="zcqws" class="mui-slider-item">3
+               </div>
+               <div dtype="dqxhjy" class="mui-slider-item">
+               </div>
+               <div dtype="zhws" class="mui-slider-item">
+               </div>
+               <div dtype="zbdc" class="mui-slider-item">
+               </div>-->
+            </div>
+         </div>
+      </div>
+     <div id="table2Wrapper" class="table-pop-pane">
+        <table id="table2"></table>
+     </div>
+     <div id="topPopover" class="mui-popover">
+         <div class="mui-popover-arrow"></div>
+         <div class="mui-scroll-wrapper">
+            <div class="mui-scroll">
+               <ul id="menuContainer" class="mui-table-view">
+                  <li class="mui-table-view-cell">
+                     <a href="#">1、新能源装机对弃电率的影响</a>
+                  </li>
+                  <li class="mui-table-view-cell">
+                     <a href="#">2、调峰率对弃电率的影响</a>
+                  </li>
+                  <li class="mui-table-view-cell">
+                     <a href="#">3、最大负荷对弃电率的影响</a>
+                  </li>
+                  <li class="mui-table-view-cell">
+                     <a href="#">4、负荷率对弃电率的影响</a>
+                  </li>
+                  <li class="mui-table-view-cell">
+                     <a href="#">5、自备电厂比例对弃电率的影响</a>
+                  </li>
+                  <li class="mui-table-view-cell">
+                     <a href="#">6、上备用系数对弃电率的影响</a>
+                  </li>
+                  <li class="mui-table-view-cell">
+                     <a href="#">7、风电占比对弃电率的影响</a>
+                  </li>
+                  <li class="mui-table-view-cell">
+                     <a href="#">8、调峰率对新能源装机的影响</a>
+                  </li>
+                  <li class="mui-table-view-cell">
+                     <a href="#">9、中长期外送对弃电率和新能源装机的影响</a>
+                  </li>
+                  <li class="mui-table-view-cell">
+                     <a href="#">10、中长期外送负荷率对弃电率的影响</a>
+                  </li>
+                  <li class="mui-table-view-cell">
+                     <a href="#">11、现货交易对弃电率和新能源装机的影响</a>
+                  </li>
+                  <li class="mui-table-view-cell">
+                     <a href="#">12、直流综合利用</a>
+                  </li>
+               </ul>
+            </div>
+         </div>
+      </div>
+   </body>
+   <script src="js/lib/mui.min.js"></script>
+   <script src="js/lib/jquery-2.1.4.min.js" type="text/javascript" charset="utf-8"></script>
+   <script src="js/lib/echarts.simple.min.js " type="text/javascript" charset="utf-8"></script>
+   <script src="js/analysis_result.js" type="text/javascript" charset="utf-8"></script>
+</html>

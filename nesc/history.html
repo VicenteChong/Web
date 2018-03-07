@@ -1,0 +1,69 @@
+<!doctype html>
+<html>
+
+   <head>
+      <meta charset="UTF-8">
+      <title></title>
+      <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+      <link rel="stylesheet" type="text/css" href="css/common.css" />
+      <link rel="stylesheet" type="text/css" href="css/lib/mui.min.css" />
+      <link rel="stylesheet" type="text/css" href="css/history.css" />
+   </head>
+
+   <body>
+      <div class="mui-scroll-wrapper">
+         <div class="mui-scroll">
+            <div id="resTitleText" style="text-align: center; padding-top: 15px; padding-bottom: 5px;">弃电率</div>
+            <div class="res-value-container">
+               <div id="resValue" class="res-value">--</div>
+            </div>
+            <ul class="mui-table-view">
+                <li class="mui-table-view-cell">
+                  <span>新能源发电量占发电量比例(%)</span>
+                  <span id="xnyfdlzb" class="mui-pull-right">--</span>
+               </li>
+               <li class="mui-table-view-cell">
+                  <span>消纳空间占有率(%)</span>
+                  <span id="xnkjzyl" class="mui-pull-right">--</span>
+               </li>
+               <li class="mui-table-view-cell">
+                  <span>外送中新能源成份(%)</span>
+                  <span id="zlwscf" class="mui-pull-right">--</span>
+               </li>
+               <li class="mui-table-view-cell">
+                  <span>外送通道利用小时数</span>
+                  <span id="zllyxss" class="mui-pull-right">--</span>
+               </li>
+            </ul>
+            <div id="historyWrapper" class="history-wrapper" style="display: none;">
+               <div id="historyTitle" class="desc-title">历史记录(点击查看，左划重新计算、删除)</div>
+               <ul id="historyContainer" class="mui-table-view history-container">
+                  <!--<li class="mui-table-view-cell">
+                     <div class="mui-slider-right mui-disabled">
+                        <a class="mui-btn mui-btn-red">删除</a>
+                     </div>
+                     <div class="mui-slider-handle">
+                        <div>
+                           <span>弃电率：<span>10%</span></span>
+                           <div class="time-desc">
+                              <span>2017-01-01</span><br>
+                              <span>2017-01-01</span>
+                           </div>
+                        </div>
+                        <div class="mui-pull-right">
+                           <div>最大负荷：<span>100MW</span></div>
+                           <div>最大负荷：<span>100MW</span></div>
+                           <div>最大负荷：<span>100MW</span></div>
+                        </div>
+                     </div>
+                  </li>-->
+               </ul>
+            </div>
+         </div>
+      </div>
+   </body>
+   <script src="js/lib/mui.js" type="text/javascript" charset="utf-8"></script>
+   <script src="js/lib/jquery-2.1.4.min.js" type="text/javascript" charset="utf-8"></script>
+   <script src="js/lib/moment.min.js" type="text/javascript" charset="utf-8"></script>
+   <script src="js/history.js" type="text/javascript" charset="utf-8"></script>
+</html>
