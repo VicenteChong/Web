@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link href="css/lib/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="css/lib/mui.picker.min.css" />
+		<link rel="stylesheet" type="text/css" href="css/common.css" />
+		<link rel="stylesheet" type="text/css" href="css/new_file.css" />
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 id="title" class="mui-title"></h1>
+		</header>
+		<div class="tab-wrapper">
+			<div class="selected tab tab-1">计算</div>
+			<div class="tab tab-2">结果</div>
+		</div>
+		<div class="mbody mui-scroll-wrapper" id="tab1Panel">
+			<div class="mui-scroll" id="calcPane">
+				<div class="desc-title">选择时间</div>
+				<div class="date-wrapper">
+					<ul class="mui-table-view">
+						<li id="sdate" class="mui-table-view-cell">
+							<a class="mui-navigate-right">
+								<span>开始日期</span>
+								<span id="sdateText" class="time-text"></span>
+							</a>
+						</li>
+						<li id="edate" class="mui-table-view-cell">
+							<a class="mui-navigate-right">
+								<span>结束日期</span>
+								<span id="edateText" class="time-text"></span>
+							</a>
+							</a>
+						</li>
+					</ul>
+				</div>
+				<div class="desc-title">
+					<img src="image/change-blue.png" style="width: 30px;">
+					<img src="image/change-grey.png" style="width: 30px;">
+				</div>
+				<div class="parameter-wrapper first-select">
+					<ul class="mui-table-view">
+						<li class="mui-table-view-cell input-cell zdfhWrapper-single">
+							<div id="zdfhWrapper" class="mui-input-row">
+								<label>
+                           <span>平均最大负荷(万千瓦):</span>
+                        </label>
+								<input id="zdfhIpt" type="number" placeholder="输入平均最大负荷" value='1000'>
+							</div>
+						</li>
+						<li class="mui-table-view-cell range-cell item-picker" tabindex="1">
+							<div class="mui-input-row mui-input-range">
+								<label>
+                           <span>负荷率: </span>
+                           <span id="fhlInfo" class="mui-icon mui-icon-info"></span>
+                        </label>
+								<div class="range-value-wrapper" style="text-align: right;">
+									<span id="fhlIpt" class="v-text">95%</span>
+									<span class="mui-icon mui-icon-arrowright"></span>
+								</div>
+							</div>
+						</li>
+						<li id="sbyxsWrapper" class="mui-table-view-cell range-cell item-picker" min="-60" max="80" tabindex="1">
+							<div class="mui-input-row mui-input-range">
+								<label>
+                           <span>上备用系数: </span>
+                           <span id="sbyxsInfo" class="mui-icon mui-icon-info"></span>
+                        </label>
+								<div class="range-value-wrapper" style="text-align: right;">
+									<span id="sbyxsIpt" class="v-text">5%</span>
+									<span class="mui-icon mui-icon-arrowright"></span>
+								</div>
+							</div>
+						</li>
+						<li id="hdtflWrapper" class="mui-table-view-cell range-cell item-picker fdtflWrapper-single" tabindex="1">
+							<div class="mui-input-row mui-input-range">
+								<label>
+                           <span>调峰率: </span>
+                           <span id="hdtflInfo" class="mui-icon mui-icon-info"></span>
+                        </label>
+								<div class="range-value-wrapper" style="text-align: right;">
+									<span id="hdtflIpt" class="v-text">40%</span>
+									<span class="mui-icon mui-icon-arrowright"></span>
+								</div>
+							</div>
+						</li>
+						<li id="zbdcblWrapper" class="mui-table-view-cell range-cell item-picker" tabindex="1">
+							<div class="mui-input-row mui-input-range">
+								<label>
+                           <span>自备电厂占比: </span>
+                           <span id="zbdcblInfo" class="mui-icon mui-icon-info"></span>
+                        </label>
+								<div class="range-value-wrapper" style="text-align: right;">
+									<span id="zbdcblIpt" class="v-text">0%</span>
+									<span class="mui-icon mui-icon-arrowright"></span>
+								</div>
+							</div>
+						</li>
+						<li id="xnyzjWrapper" class="mui-table-view-cell input-cell xnyzjWrapper-single">
+							<div class="mui-input-row">
+								<label>
+                           <span>新能源装机(万千瓦):</span>
+                        </label>
+								<input id="xnyzjIpt" type="number" placeholder="输入新能源装机容量" value='1500'>
+							</div>
+						</li>
+						<li class="mui-table-view-cell range-cell item-picker" tabindex="1">
+							<div class="mui-input-row mui-input-range">
+								<label>
+                           <span>风电占比: </span>
+                           <span id="fdzjbInfo" class="mui-icon mui-icon-info"></span>
+                        </label>
+								<div class="range-value-wrapper" style="text-align: right;">
+									<span id="fdzjbIpt" class="v-text">60%</span>
+									<span class="mui-icon mui-icon-arrowright"></span>
+								</div>
+							</div>
+						</li>
+						<li id="mbqdlWrapper" class="mui-table-view-cell range-cell item-picker" tabindex="1">
+							<div class="mui-input-row mui-input-range">
+								<label>
+                           <span>目标弃电率(%):</span>
+                        </label>
+								<div class="range-value-wrapper" style="text-align: right;">
+									<span id="mbqdlIpt" class="v-text">5%</span>
+									<span class="mui-icon mui-icon-arrowright"></span>
+								</div>
+							</div>
+						</li>
+					</ul>
+				</div>
+				<div class="desc-title first-select">外送(中长期)<span id="zlzcqInfo" class="mui-icon mui-icon-info"></span></div>
+				<div class="date-wrapper first-select">
+					<ul class="mui-table-view">
+						<li class="mui-table-view-cell input-cell">
+							<div class="mui-input-row">
+								<label style="width: 55%;">
+                           <span>外送能力(万千瓦):</span>
+                        </label>
+								<input id="zlssnlIpt" type="number" style="width: 45%;" placeholder="输入外送能力">
+							</div>
+						</li>
+						<li id="stime" class="mui-table-view-cell hide-by-type9">
+							<a class="mui-navigate-right">
+								<label>
+                        <span>高峰开始时间</span>
+                        <span id="stimeText" class="time-text">08:00</span>
+                        </label>
+							</a>
+						</li>
+						<li id="etime" class="mui-table-view-cell hide-by-type9">
+							<a class="mui-navigate-right">
+								<label>
+                        <span>高峰结束时间</span>
+                        <span id="etimeText" class="time-text">20:00</span>
+                        </label>
+							</a>
+							</a>
+						</li>
+						<li class="mui-table-view-cell input-cell hide-by-type9">
+							<div class="mui-input-row">
+								<label>
+                           <span>高峰电力(万千瓦):</span>
+                        </label>
+								<input id="zlgffhIpt" type="number" placeholder="输入高峰负荷">
+							</div>
+						</li>
+						<li class="mui-table-view-cell input-cell hide-by-type9">
+							<div class="mui-input-row">
+								<label>
+                           <span>低谷电力(万千瓦):</span>
+                        </label>
+								<input id="zlpdfhIpt" type="number" placeholder="输入平段负荷">
+							</div>
+						</li>
+						<li id="gfjsbcWrapper" class="mui-table-view-cell input-cell" style="display: none;">
+							<div class="mui-input-row">
+								<label>
+                           <span>高峰计算步长(万千瓦):</span>
+                        </label>
+								<input id="wsjsbcIpt" type="number" placeholder="输入高峰计算步长">
+							</div>
+						</li>
+					</ul>
+				</div>
+				<div class="desc-title hide-by-type8 first-select">短期现货<span id="zlxhInfo" class="mui-icon mui-icon-info"></span></div>
+				<div class="date-wrapper hide-by-type8 first-select">
+					<ul class="mui-table-view">
+						<li class="mui-table-view-cell input-cell">
+							<div class="mui-input-row">
+								<label>
+                           <span>短期现货(万千瓦):</span>
+                        </label>
+								<input id="zlxhIpt" type="number" placeholder="输入短期现货">
+							</div>
+						</li>
+						<li class="mui-table-view-cell input-cell">
+							<div class="mui-input-row">
+								<label>
+                           <span>是否启用全部短期现货:</span>
+                        </label>
+								<div id="isZlxh" class="mui-switch mui-switch-mini">
+									<div class="mui-switch-handle"></div>
+								</div>
+							</div>
+						</li>
+					</ul>
+				</div>
+				<div class="desc-title hide-by-type8 first-select">外送通道<span id="wstdInfo" class="mui-icon mui-icon-info"></span></div>
+				<div class="date-wrapper hide-by-type8 first-select">
+					<ul class="mui-table-view">
+						<li class="mui-table-view-cell input-cell">
+							<div class="mui-input-row">
+								<label>
+                           <span>外送通道能力:</span>
+                        </label>
+								<input id="wstdIpt" type="number" placeholder="输入外送通道能力">
+							</div>
+						</li>
+					</ul>
+				</div>
+				<div class="parameter-wrapper secord-select" style="display: none;">
+					<ul class="mui-table-view">
+						<li class="mui-table-view-cell input-cell zdfhWrapper-single">
+							<div id="zdfhWrapper" class="mui-input-row">
+								<label>
+                           <span>平均最大负荷(万千瓦):</span>
+                        </label>
+								<input id="zdfhIpt" type="number" placeholder="输入平均最大负荷" value='1000'>
+							</div>
+						</li>
+						<li class="mui-table-view-cell range-cell item-picker" tabindex="1">
+							<div class="mui-input-row mui-input-range">
+								<label>
+                           <span>负荷率: </span>
+                           <span id="fhlInfo" class="mui-icon mui-icon-info"></span>
+                        </label>
+								<div class="range-value-wrapper" style="text-align: right;">
+									<span id="fhlIpt" class="v-text">95%</span>
+									<span class="mui-icon mui-icon-arrowright"></span>
+								</div>
+							</div>
+						</li>
+						<li id="sbyxsWrapper" class="mui-table-view-cell range-cell item-picker" min="-60" max="80" tabindex="1">
+							<div class="mui-input-row mui-input-range">
+								<label>
+                           <span>上备用系数: </span>
+                           <span id="sbyxsInfo" class="mui-icon mui-icon-info"></span>
+                        </label>
+								<div class="range-value-wrapper" style="text-align: right;">
+									<span id="sbyxsIpt" class="v-text">5%</span>
+									<span class="mui-icon mui-icon-arrowright"></span>
+								</div>
+							</div>
+						</li>
+						<li id="hdtflWrapper" class="mui-table-view-cell range-cell item-picker fdtflWrapper-single" tabindex="1">
+							<div class="mui-input-row mui-input-range">
+								<label>
+                           <span>调峰率: </span>
+                           <span id="hdtflInfo" class="mui-icon mui-icon-info"></span>
+                        </label>
+								<div class="range-value-wrapper" style="text-align: right;">
+									<span id="hdtflIpt" class="v-text">40%</span>
+									<span class="mui-icon mui-icon-arrowright"></span>
+								</div>
+							</div>
+						</li>
+						<li id="zbdcblWrapper" class="mui-table-view-cell range-cell item-picker" tabindex="1">
+							<div class="mui-input-row mui-input-range">
+								<label>
+                           <span>自备电厂占比: </span>
+                           <span id="zbdcblInfo" class="mui-icon mui-icon-info"></span>
+                        </label>
+								<div class="range-value-wrapper" style="text-align: right;">
+									<span id="zbdcblIpt" class="v-text">0%</span>
+									<span class="mui-icon mui-icon-arrowright"></span>
+								</div>
+							</div>
+						</li>
+						<li id="xnyzjWrapper" class="mui-table-view-cell input-cell xnyzjWrapper-single">
+							<div class="mui-input-row">
+								<label>
+                           <span>新能源装机(万千瓦):</span>
+                        </label>
+								<input id="xnyzjIpt" type="number" placeholder="输入新能源装机容量" value='1500'>
+							</div>
+						</li>
+						<li class="mui-table-view-cell range-cell item-picker" tabindex="1">
+							<div class="mui-input-row mui-input-range">
+								<label>
+                           <span>风电占比: </span>
+                           <span id="fdzjbInfo" class="mui-icon mui-icon-info"></span>
+                        </label>
+								<div class="range-value-wrapper" style="text-align: right;">
+									<span id="fdzjbIpt" class="v-text">60%</span>
+									<span class="mui-icon mui-icon-arrowright"></span>
+								</div>
+							</div>
+						</li>
+						<li id="mbqdlWrapper" class="mui-table-view-cell range-cell item-picker" tabindex="1">
+							<div class="mui-input-row mui-input-range">
+								<label>
+                           <span>目标弃电率(%):</span>
+                        </label>
+								<div class="range-value-wrapper" style="text-align: right;">
+									<span id="mbqdlIpt" class="v-text">5%</span>
+									<span class="mui-icon mui-icon-arrowright"></span>
+								</div>
+							</div>
+						</li>
+					</ul>
+				</div>
+				<div class="desc-title secord-select" style="display: none;">外送(中长期)<span id="zlzcqInfo" class="mui-icon mui-icon-info"></span></div>
+				<div class="date-wrapper secord-select" style="display: none;">
+					<ul class="mui-table-view">
+						<li class="mui-table-view-cell input-cell">
+							<div class="mui-input-row">
+								<label style="width: 55%;">
+                           <span>外送能力(万千瓦):</span>
+                        </label>
+								<input id="zlssnlIpt" type="number" style="width: 45%;" placeholder="输入外送能力">
+							</div>
+						</li>
+						<li id="stime2" class="mui-table-view-cell hide-by-type9">
+							<a class="mui-navigate-right">
+								<label>
+                        <span>高峰开始时间</span>
+                        <span id="stime2Text" class="time-text">08:00</span>
+                        </label>
+							</a>
+						</li>
+						<li id="etime2" class="mui-table-view-cell hide-by-type9">
+							<a class="mui-navigate-right">
+								<label>
+                        <span>高峰结束时间</span>
+                        <span id="etime2Text" class="time-text">20:00</span>
+                        </label>
+							</a>
+							</a>
+						</li>
+						<li class="mui-table-view-cell input-cell hide-by-type9">
+							<div class="mui-input-row">
+								<label>
+                           <span>高峰电力(万千瓦):</span>
+                        </label>
+								<input id="zlgffhIpt" type="number" placeholder="输入高峰负荷">
+							</div>
+						</li>
+						<li class="mui-table-view-cell input-cell hide-by-type9">
+							<div class="mui-input-row">
+								<label>
+                           <span>低谷电力(万千瓦):</span>
+                        </label>
+								<input id="zlpdfhIpt" type="number" placeholder="输入平段负荷">
+							</div>
+						</li>
+						<li id="gfjsbcWrapper" class="mui-table-view-cell input-cell" style="display: none;">
+							<div class="mui-input-row">
+								<label>
+                           <span>高峰计算步长(万千瓦):</span>
+                        </label>
+								<input id="wsjsbcIpt" type="number" placeholder="输入高峰计算步长">
+							</div>
+						</li>
+					</ul>
+				</div>
+				<div class="desc-title hide-by-type8 secord-select" style="display: none;">短期现货<span id="zlxhInfo" class="mui-icon mui-icon-info"></span></div>
+				<div class="date-wrapper hide-by-type8 secord-select" style="display: none;">
+					<ul class="mui-table-view">
+						<li class="mui-table-view-cell input-cell">
+							<div class="mui-input-row">
+								<label>
+                           <span>短期现货(万千瓦):</span>
+                        </label>
+								<input id="zlxhIpt" type="number" placeholder="输入短期现货">
+							</div>
+						</li>
+						<li class="mui-table-view-cell input-cell">
+							<div class="mui-input-row">
+								<label>
+                           <span>是否启用全部短期现货:</span>
+                        </label>
+								<div id="isZlxh" class="mui-switch mui-switch-mini">
+									<div class="mui-switch-handle"></div>
+								</div>
+							</div>
+						</li>
+					</ul>
+				</div>
+				<div class="calc-button-wrapper">
+					<button id="calc" class="calc-button" data-loading-text="计算中">计算</button>
+				</div>
+			</div>
+		</div>
+		<div class="mbody mui-scroll-wrapper" id="mulResultPane" style="display: none;">
+			<div class="mui-scroll">
+				<div id="resTitleText" style="text-align: center; padding-bottom: 5px;padding-top: 20px;">弃电率(%)</div>
+				<div class="res-value-container">
+					<div id="resValue" class="res-value">-- / -- / --</div>
+					<span id="addHistory" class="add-history disabled">添加到历史记录</span>
+				</div>
+				<div id="itemContainer">
+					<ul class="mui-table-view">
+						<li class="mui-table-view-cell li-name">
+							<div>新能源发电量占总发电量比例(%)</div>
+						</li>
+						<li class="mui-table-view-cell">
+							<div id="xnyfdlzb" class="mui-pull-value">-- / -- / --</div>
+						</li>
+						<li class="mui-table-view-cell li-name">
+							<div>消纳空间占有率(%)</div>
+						</li>
+						<li class="mui-table-view-cell">
+							<div id="xnkjzyl" class="mui-pull-value">-- / -- / --</div>
+						</li>
+						<li class="mui-table-view-cell li-name">
+							<div>外送中新能源成分(%)</div>
+						</li>
+						<li class="mui-table-view-cell">
+							<div id="zlwscf" class="mui-pull-value">-- / -- / --</div>
+						</li>
+						<li class="mui-table-view-cell li-name">
+							<div>外送通道利用小时数</div>
+						</li>
+						<li class="mui-table-view-cell">
+							<div id="zllyxss" class="mui-pull-value">-- / -- / --</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script src="js/lib/mui.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/lib/mui.picker.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/lib/mui.dtpicker.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/lib/mui.poppicker.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/lib/jquery-2.1.4.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/data/load.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/data/photovoltaic.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/data/wind.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/lib/moment.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/lib/echarts.simple.min.js " type="text/javascript" charset="utf-8"></script>
+	<script src="js/history-source.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/new_file_algorithm.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/new_file.js" type="text/javascript" charset="utf-8"></script>
+
+</html>

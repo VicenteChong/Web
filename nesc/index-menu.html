@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+
+   <head>
+      <meta charset="utf-8">
+      <title>Hello MUI</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+      <meta name="apple-mobile-web-app-capable" content="yes">
+      <meta name="apple-mobile-web-app-status-bar-style" content="black">
+      <link rel="stylesheet" href="css/lib/mui.min.css" />
+      <link rel="stylesheet" type="text/css" href="css/index-menu.css" />
+   </head>
+
+   <body class="menu-body">
+      <div class="main-pane">
+         <div class="menu-item is-folder folder1" to="simulator" type="1">
+            <img src="image/folder1.png"/>
+            <div class="text-wrapper">调控中心</div>
+         </div>
+         <div class="menu-item is-folder folder2" to="simulator" type="2">
+            <img src="image/folder2.png"/>
+            <div class="text-wrapper">发展规划</div>
+         </div>
+         <div class="menu-item is-folder folder3" to="simulator" type="8">
+            <img src="image/transaction.png"/>
+            <div class="text-wrapper">电力交易</div>
+         </div>
+         <div class="menu-item" to="new_file" type="12">
+            <img src="image/yueshu.png"/>
+            <div class="text-wrapper">网络约束</div>
+         </div>
+         <!--
+         <div class="menu-item" to="analysis_show" type="7">
+            <img src="image/analysis.png"/>
+            <div class="text-wrapper">实例展示</div>
+         </div>
+         -->
+         <div class="menu-item" to="analysis_result_menu" type="7">
+            <img src="image/example.png"/>
+            <div class="text-wrapper">分析结论</div>
+         </div>
+      </div>
+      <div class="mask-pane"></div>
+      <div class="forder-name"></div>
+      <div class="folder-pane">
+      </div>
+   </body>
+   <script src="js/lib/mui.min.js"></script>
+   <script src="js/lib/jquery-2.1.4.min.js" type="text/javascript" charset="utf-8"></script>
+   <script type="text/javascript" charset="utf-8">
+      //mui初始化
+      mui.init();
+      var item1 = '<div class="menu-item" to="simulator" type="1">'
+                  +   '<img src="image/1.png"/>'
+                  +   '<div class="text-wrapper">弃电率</br>计算器</div>'
+                  + '</div>'
+                  + '<div class="menu-item" to="simulator" type="4">'
+                  +     '<img src="image/4.png"/>'
+                  +     '<div class="text-wrapper">上备用系数</br>计算器</div>'
+                  + '</div>'
+                  + '<div class="menu-item" to="simulator" type="5">'
+                  +     '<img src="image/5.png"/>'
+                  +     '<div class="text-wrapper">调峰率</br>计算器</div>'
+                  + '</div>';
+
+      var item2 = '<div class="menu-item" to="simulator" type="2">'
+                  +   '<img src="image/2.png"/>'
+                  +   '<div class="text-wrapper">新能源装机</br>计算器</div>'
+                  + '</div>'
+                  + '<div class="menu-item" to="simulator" type="3">'
+                  +     '<img src="image/3.png"/>'
+                  +     '<div class="text-wrapper">最大负荷</br>计算器</div>'
+                  + '</div>'
+                  + '<div class="menu-item" to="simulator" type="6">'
+                  +     '<img src="image/6.png"/>'
+                  +     '<div class="text-wrapper">自备电厂占比</br>计算器</div>'
+                  + '</div>';
+
+      var item3 = '<div class="menu-item" to="simulator" type="8">'
+                  +   '<img src="image/8.png"/>'
+                  +   '<div class="text-wrapper">中长期外送</br>计算器</div>'
+                  + '</div>'
+                  + '<div class="menu-item" to="simulator" type="9">'
+                  +     '<img src="image/9.png"/>'
+                  +     '<div class="text-wrapper">短期现货</br>计算器</div>'
+                  + '</div>'
+                  + '<div class="menu-item" to="simulator" type="10">'
+                  +     '<img src="image/10.png"/>'
+                  +     '<div class="text-wrapper">综合利用</br>计算器</div>'
+                  + '</div>';
+
+      $(".menu-body").delegate(".menu-item", "tap", function(e) {
+         e.stopPropagation();
+
+         if($(this).hasClass("is-folder")) {
+            $(".folder-pane").html("");
+
+            if($(this).hasClass("folder1")) {
+               $(".folder-pane").append(item1);
+            }
+            else if($(this).hasClass("folder2")) {
+               $(".folder-pane").append(item2);
+            }
+            else {
+               $(".folder-pane").append(item3);
+            }
+
+            $('.main-pane').css({
+               'filter': 'blur(3px)',
+               '-webkit-filter': 'blur(3px)'
+               });
+            $(".mask-pane").show();
+            $(".forder-name").html($(this).find(".text-wrapper").html());
+            $(".forder-name").css({"display": "block"});
+            $(".folder-pane").animate({
+               "width": "300px",
+               "height": "300px",
+               "marginLeft": "-150px",
+               "marginTop": "-150px"}, {
+                  'duration': 200
+               });
+
+            return;
+         }
+
+         var targetTab = $(this).attr("to");
+         var type = $(this).attr("type");
+
+         mui.openWindow({
+            url: targetTab + ".html",
+            id: targetTab,
+            extras: {
+               type: type
+            }
+         });
+      });
+
+      $(".mask-pane").on("tap", function() {
+         $(".folder-pane").html("");
+         $(".main-pane").show()
+            .css({
+               'filter': 'blur(0)',
+               '-webkit-filter': 'blur(0)'
+               });
+         $(".mask-pane").hide();
+         $(".forder-name").html("");
+         $(".forder-name").css({"display": "none"});
+         $(".folder-pane").animate({
+            "width": "0px",
+            "height": "0px",
+            "marginLeft": "0px",
+            "marginTop": "0px"}, {
+               'duration': 200
+            });
+      })
+   </script>
+
+</html>
